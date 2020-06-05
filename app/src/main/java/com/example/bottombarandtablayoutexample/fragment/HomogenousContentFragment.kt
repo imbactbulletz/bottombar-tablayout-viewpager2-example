@@ -12,21 +12,13 @@ import com.example.bottombarandtablayoutexample.adapter.HomogenousContentViewPag
 import com.example.bottombarandtablayoutexample.adapter.diffutil.QuoteDiffUtilItemCallback
 import com.example.bottombarandtablayoutexample.viewmodel.HomogenousContentViewModel
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.fragment_homogenous_content.*
+import kotlinx.android.synthetic.main.fragment_tab_layout.*
 
-class HomogenousContentFragment : Fragment() {
+class HomogenousContentFragment : Fragment(R.layout.fragment_tab_layout) {
 
     private val viewModel by viewModels<HomogenousContentViewModel>()
 
     private lateinit var viewPagerAdapter: HomogenousContentViewPagerAdapter
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_homogenous_content, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,7 +31,7 @@ class HomogenousContentFragment : Fragment() {
         viewPagerAdapter = HomogenousContentViewPagerAdapter(QuoteDiffUtilItemCallback())
         viewPager.adapter = viewPagerAdapter
 
-        // we use this instead of setUpWithViewpager() (as in viewpager v1)
+        // we use this instead of setUpWithViewpager() like we used to in viewpager v1
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = position.toString()
         }.attach()
