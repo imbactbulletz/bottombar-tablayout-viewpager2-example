@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initFragment() {
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.frameContainerView, HomogenousContentFragment())
+        transaction.add(R.id.fragmentContainerView, HomogenousContentFragment())
         transaction.commit()
     }
 }
